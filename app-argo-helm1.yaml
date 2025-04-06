@@ -12,7 +12,7 @@ spec:
     helm:
       releaseName: chart
       valueFiles:
-        - custom-values.yaml
+        - "./custom-values.yaml"
     repoURL: https://github.com/KabraJiii/argocd
     path: helm/mychart
     targetRevision: main
