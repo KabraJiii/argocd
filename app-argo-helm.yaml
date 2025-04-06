@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-helm
+  namespace: argocd
+spec:
+  project: default
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: default
+  source:
+    helm:
+      releaseName: chart
+      parameters:
+        - name: "replicaCount"
+          value: "2"
+        - name: "image.repository"
+          value: "vimal13/apache-webserver-php"
+        - name: "image.tag"
+          value: "latest"
+    repoURL: https://github.com/KabraJiii/argocd
+    path: helm/mychart
+    targetRevision: main
